@@ -44,7 +44,7 @@
 
                 if (playerChoice == null) {
                     // Handle player clicking 'cancel' on prompt
-                    result = "startGame cancelled.";
+                    result = "Game cancelled.";
                 } else if (allChoices.includes(playerChoice.toLowerCase())) {
                     // Normal round
                     let computerIndex = computerPlay();
@@ -78,7 +78,7 @@
                             roundsDraw += 1;
                             break;
                         case roundResult.includes("cancel"):
-                            result = `You prematurely ended the startGame before round ${n+1} with ${roundsWon} wins, ${roundsLost} losses and ${roundsDraw} draws.`;
+                            result = `You prematurely ended the game before round ${n+1} with ${roundsWon} wins, ${roundsLost} losses and ${roundsDraw} draws.`;
                             break repeatRounds;
                     }
                 }
