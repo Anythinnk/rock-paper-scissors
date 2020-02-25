@@ -6,25 +6,23 @@
     </head>
     <body>
         <script>
-            // Initialize global variables
             const allChoices = ["rock","paper","scissors"];
 
-            // Randomly generates computer choice
             function computerPlay() {
                 let choiceIndex = Math.floor(Math.random()*allChoices.length);
                 return choiceIndex;
             }
 
-            // Calculates whether player wins or loses a round
-            function playRound(playerChoice, computerIndex) {
+            function decideWinner(playerChoice, computerIndex) {
                 let computerChoice = allChoices[computerIndex];
                 let playerIndex = allChoices.indexOf(playerChoice);
                 
-                // Math calculations to resolve winner, details at bottom of file
+                // Uses array index of each choice to compute who wins, details at bottom of file
                 let difference = playerIndex - computerIndex;
                 if (Math.abs(difference) == 2) {
                     difference *= -0.5
                 }
+				
                 if (difference == 1) {
                     return `You win! Your choice "${playerChoice.toLowerCase()}" beats computer choice "${computerChoice}".`
                 } else if (difference == -1) {
@@ -34,25 +32,23 @@
                 }
             }
             
-            // Prompts player for choice and runs one round of the game
             function oneRound(roundNum = false) {
                 let playerChoice;
                 let result;
-                // Check whether it is a multi-round game to display the round number in the prompt
-                if (roundNum) {
+                
+				if (roundNum) {
                     playerChoice = prompt(`Round ${roundNum}: What is your choice?`,"");
                 } else {
                     playerChoice = prompt("What is your choice?","");
                 }
 
-                // Run the round if necessary
                 if (playerChoice == null) {
                     // Handle player clicking 'cancel' on prompt
-                    result = "Game cancelled.";
+                    result = "startGame cancelled.";
                 } else if (allChoices.includes(playerChoice.toLowerCase())) {
                     // Normal round
                     let computerIndex = computerPlay();
-                    result = playRound(playerChoice, computerIndex);
+                    result = decideWinner(playerChoice, computerIndex);
                 } else {
                     // Repeat prompt if player enters invalid value
                     alert("Please choose either 'rock', 'paper' or 'scissors'!");
@@ -61,19 +57,16 @@
                 return result;
             }
 
-            // Runs a multi-round game
-            function game(rounds = 5) {
+            function startGame(rounds = 5) {
                 let roundsWon = 0;
                 let roundsLost = 0;
                 let roundsDraw = 0;
                 let result;
 
-                // Runs a loop for the number of rounds stated
                 repeatRounds:
                 for (let n = 0; n < rounds; n++) {
                     let roundResult = oneRound(n+1);
                     console.log(roundResult);
-                    // Keep track of rounds won/lost/drawn
                     switch (true) {
                         case roundResult.includes("win"):
                             roundsWon += 1;
@@ -84,14 +77,12 @@
                         case roundResult.includes("draw"):
                             roundsDraw += 1;
                             break;
-                        // If game is cancelled in any round, ends the loop
                         case roundResult.includes("cancel"):
-                            result = `You prematurely ended the game before round ${n+1} with ${roundsWon} wins, ${roundsLost} losses and ${roundsDraw} draws.`;
+                            result = `You prematurely ended the startGame before round ${n+1} with ${roundsWon} wins, ${roundsLost} losses and ${roundsDraw} draws.`;
                             break repeatRounds;
                     }
                 }
 
-                // Update status of whether player won or lost
                 if (result == undefined) {
                     switch (true) {
                         case (roundsWon == roundsLost):
@@ -106,7 +97,7 @@
                 }
                 return result;
             }
-            console.log(game());
+            console.log(startGame());
         </script>
     </body>
 </html>
