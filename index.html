@@ -62,7 +62,7 @@
             }
 
             // Runs a multi-round game
-            function game(rounds = 3) {
+            function game(rounds = 5) {
                 let roundsWon = 0;
                 let roundsLost = 0;
                 let roundsDraw = 0;
@@ -86,7 +86,7 @@
                             break;
                         // If game is cancelled in any round, ends the loop
                         case roundResult.includes("cancel"):
-                            result = roundResult;
+                            result = `You prematurely ended the game before round ${n+1} with ${roundsWon} wins, ${roundsLost} losses and ${roundsDraw} draws.`;
                             break repeatRounds;
                     }
                 }
@@ -106,7 +106,7 @@
                 }
                 return result;
             }
-            console.log(game(5));
+            console.log(game());
         </script>
     </body>
 </html>
