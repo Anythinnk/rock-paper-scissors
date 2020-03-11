@@ -3,9 +3,47 @@
     <head>
         <title>Rock Paper Scissors</title>
         <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-
+        <main>
+            <div id="display-title">
+                <h1>Rock Paper Scissors</h1>
+                <p>Can you win?</p>
+            </div>
+            <div id="round-number">
+                <h2>Round 1</h2>
+            </div>
+            <div class="score-area">
+                <div class="scores" id="score-wins">
+                    <p class="label">You</p>
+                    <h3>Wins</h3>
+                    <p>0</p>
+                </div>
+                <div class="scores" id="score-ties">
+                    <h3>Ties</h3>
+                    <p>0</p>
+                </div>
+                <div class="scores" id="score-losses">
+                    <p class="label">Computer</p>
+                    <h3>Wins</h3>
+                    <p>0</p>
+                </div>
+            </div>
+            <div class="choice-display-box" id="player-choice-display"></div>    
+            <form id="player-choice">
+                <button class="buttons" id="rock-button">Rock</button>
+                <button class="buttons" id="paper-button">Paper</button>
+                <button class="buttons" id="scissors-button">Scissors</button>
+            </form>
+            <div id="round-history">
+                <h3>Recent history</h3>
+            </div>
+            <div class="choice-display-box" id="computer-choice-display"></div>
+            <div id="computer-taunt">
+                <p>"So, you think you can beat me?"</p>
+            </div>
+        </main>
         <script type="text/javascript" src="script.js">
         </script>
     </body>

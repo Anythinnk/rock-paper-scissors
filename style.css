@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(240,240,240);
+    font-family: "Segoe UI", sans-serif;
+    font-size: 100%;
+}
+
+main {
+    display: grid;
+/*    grid-template-areas:
+    "title title title"
+    "score score score"
+    "round round round"
+    "player history computer"
+    "buttons history taunt"; 
+    grid-template-columns: 1fr .75fr 1fr; */
+    grid-template-areas:
+    "title title"
+    "score score"
+    "round round"
+    "player computer"
+    "taunt taunt"
+    "buttons buttons"
+    "history history";
+    grid-template-columns: 1fr 1fr;
+    grid-gap: max(1vw, 5px);
+    text-transform: uppercase;
+}
+
+#display-title {
+    grid-area: title;
+    text-align: center;
+}
+
+#display-title > h1 {
+    margin-bottom: 0;
+    color: rgb(209, 21, 21);
+    font-size: 2.4rem;
+}
+
+#display-title > p {
+    margin-top: 10px;
+    color: rgb(73, 73, 73);
+    font-size: 1.2rem;
+}
+
+.score-area {
+    grid-area: score;
+    display: grid;
+    grid-template-columns: 1fr .75fr 1fr;
+    grid-gap: max(1vw, 5px);
+}
+
+.scores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.scores > h3 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: rgb(209, 21, 21);
+}
+
+.scores > p {
+    margin: 6px auto 3px;
+    font-size: 1.5rem;
+}
+
+.scores > p.label {
+    font-size: 1rem;
+    color: rgb(114, 114, 114);
+}
+
+#round-number {
+    grid-area: round;
+    text-align: center;
+}
+
+#round-number > h2 {
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+#player-choice-display {
+    grid-area: player;
+}
+
+#computer-choice-display {
+    grid-area: computer;
+}
+
+.choice-display-box {
+    border: 1px solid rgb(80, 80, 80);
+    margin: 0 5%;
+    padding-bottom: 100%;
+    background-color: white;
+}
+
+#player-choice {
+    grid-area: buttons;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#computer-taunt {
+    grid-area: taunt;
+    text-align: center;
+    text-transform: initial;
+}
+
+#computer-taunt > p {
+    font-size: 1rem;
+    font-style: italic;
+    margin-top: 0;
+}
+
+#round-history {
+    grid-area: history;
+    text-align: center;
+}
+

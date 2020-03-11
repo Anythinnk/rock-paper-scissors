@@ -89,7 +89,7 @@ function startGame(rounds = 5) {
     }
     return result;
 }
-console.log(startGame());
+//console.log(startGame());
 
 /*
 Using the indexes of the choices wrt the array allChoices:
