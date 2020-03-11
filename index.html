@@ -12,30 +12,31 @@
                 <p>Can you win?</p>
             </div>
             <div id="round-number">
-                <h2>Round 1</h2>
+                <h2>Round <span>1</span></h2>
+                <p>Click on a button to get started!</p>
             </div>
             <div class="score-area">
                 <div class="scores" id="score-wins">
                     <p class="label">You</p>
                     <h3>Wins</h3>
-                    <p>0</p>
+                    <p id="wins-num">0</p>
                 </div>
                 <div class="scores" id="score-ties">
                     <h3>Ties</h3>
-                    <p>0</p>
+                    <p id="ties-num">0</p>
                 </div>
                 <div class="scores" id="score-losses">
                     <p class="label">Computer</p>
                     <h3>Wins</h3>
-                    <p>0</p>
+                    <p id="losses-num">0</p>
                 </div>
             </div>
             <div class="choice-display-box" id="player-choice-display"></div>    
-            <form id="player-choice">
-                <button class="buttons" id="rock-button">Rock</button>
-                <button class="buttons" id="paper-button">Paper</button>
-                <button class="buttons" id="scissors-button">Scissors</button>
-            </form>
+            <div id="player-choice">
+                <button class="player-buttons" id="rock">Rock</button>
+                <button class="player-buttons" id="paper">Paper</button>
+                <button class="player-buttons" id="scissors">Scissors</button>
+            </div>
             <div id="round-history">
                 <h3>Recent history</h3>
             </div>

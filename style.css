@@ -2,8 +2,16 @@
     box-sizing: border-box;
 }
 
+:root {
+    --custom-red: rgb(209, 21, 21);
+    --custom-green: rgb(27, 155, 91);
+    --custom-dark-grey: rgb(73, 73, 73);
+    --custom-grey: rgb(114, 114, 114);
+    --custom-off-white: rgb(240, 240, 240);
+}
+
 body {
-    background-color: rgb(240,240,240);
+    background-color: var(--custom-off-white);
     font-family: "Segoe UI", sans-serif;
     font-size: 100%;
 }
@@ -37,13 +45,13 @@ main {
 
 #display-title > h1 {
     margin-bottom: 0;
-    color: rgb(209, 21, 21);
+    color: var(--custom-red);
     font-size: 2.4rem;
 }
 
 #display-title > p {
     margin-top: 10px;
-    color: rgb(73, 73, 73);
+    color: var(--custom-dark-grey);
     font-size: 1.2rem;
 }
 
@@ -65,7 +73,7 @@ main {
     margin: 0;
     font-weight: normal;
     font-size: 1.5rem;
-    color: rgb(209, 21, 21);
+    color: var(--custom-red);
 }
 
 .scores > p {
@@ -75,7 +83,7 @@ main {
 
 .scores > p.label {
     font-size: 1rem;
-    color: rgb(114, 114, 114);
+    color: var(--custom-grey);
 }
 
 #round-number {
@@ -89,6 +97,12 @@ main {
     margin: 10px 0;
 }
 
+#round-number > p {
+    font-size: 1.1rem;
+    margin: 5px 0;
+    color: var(--custom-grey);
+}
+
 #player-choice-display {
     grid-area: player;
 }
@@ -98,7 +112,7 @@ main {
 }
 
 .choice-display-box {
-    border: 1px solid rgb(80, 80, 80);
+    border: 1px solid var(--custom-dark-grey);
     margin: 0 5%;
     padding-bottom: 100%;
     background-color: white;
