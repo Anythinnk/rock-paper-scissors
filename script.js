@@ -9,8 +9,12 @@ const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 
+function generateRandIndex(array) {
+    return Math.floor(Math.random()*array.length);
+}
+
 function computerPlay() {
-    let choiceIndex = Math.floor(Math.random()*allChoices.length);
+    let choiceIndex = generateRandIndex(allChoices);
     return choiceIndex;
 }
 
@@ -32,8 +36,34 @@ function playRound(playerChoice) {
     let computerIndex = computerPlay();
     let computerChoice = allChoices[computerIndex];
     result = decideWinner(playerChoice, computerIndex);
-    /*taunt = generateTaunt(result);*/
+    taunt = generateTaunt(result);
     updateDisplay(playerChoice, computerChoice, result, taunt);
+}
+
+function generateTaunt(result) {
+    let computerWon = [
+        `"I'm the best!"`,
+        `"Get on my level!"`,
+        `"Cry me a river~"`,
+        `"Why so mad??"`
+    ];
+    let computerTied = [
+        `"I'm not even trying!"`,
+        `"Not gonna get me this time!"`
+    ];
+    let computerLost = [
+        `"Pffft! You got lucky!"`,
+        `"HOW??!!"`,
+        `"You must have cheated!"`
+    ];
+    switch (result) {
+        case 1:
+            return computerLost[generateRandIndex(computerLost)];
+        case -1:
+            return computerWon[generateRandIndex(computerWon)];
+        case 0:
+            return computerTied[generateRandIndex(computerTied)];
+    }
 }
 
 function increase(targetIntegerString) {
@@ -42,22 +72,23 @@ function increase(targetIntegerString) {
 
 function updateDisplay(playerChoice, computerChoice, result, taunt) {
     increase(numRounds);
-    switch (true) {
-        case result === 1:
+    switch (result) {
+        case 1:
             increase(wonRounds);
             resultAnnouncer.textContent = `You won! ${playerChoice} beats ${computerChoice}!`;
             resultAnnouncer.style.color = 'var(--custom-green)';
             break;
-        case result === -1:
+        case -1:
             increase(lostRounds);
             resultAnnouncer.textContent = `You lost! ${playerChoice} loses to ${computerChoice}!`;
             resultAnnouncer.style.color = 'var(--custom-red)';
             break;
-        case result === 0:
+        case 0:
             increase(tiedRounds);
             resultAnnouncer.textContent = `It's a tie! ${playerChoice}! does nothing against ${computerChoice}!`;
             resultAnnouncer.style.color = 'var(--custom-grey)';
     }
+    tauntText.textContent = taunt;
 }
 
 const choiceButtons = document.querySelectorAll('.player-buttons');
