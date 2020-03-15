@@ -3,10 +3,12 @@
 }
 
 :root {
-    --custom-red: rgb(209, 21, 21);
+    --custom-red: rgb(225, 65, 65);
+    --custom-dark-red: rgb(195, 65, 65);
+    --custom-light-red: rgb(255, 65, 65);
     --custom-green: rgb(27, 155, 91);
-    --custom-dark-grey: rgb(73, 73, 73);
-    --custom-grey: rgb(114, 114, 114);
+    --custom-dark-grey: rgb(122, 122, 122);
+    --custom-grey: rgb(161, 161, 161);
     --custom-off-white: rgb(240, 240, 240);
 }
 
@@ -112,7 +114,7 @@ main {
 }
 
 .choice-display-box {
-    border: 1px solid var(--custom-dark-grey);
+    border: 1px solid var(--custom-grey);
     margin: 0 5%;
     padding-bottom: 100%;
     background-color: white;
@@ -133,7 +135,29 @@ main {
 #computer-taunt > p {
     font-size: 1rem;
     font-style: italic;
-    margin-top: 0;
+    margin: 6px 0 12px;
+}
+
+.player-buttons {
+    height: 45px;
+    width: 120px;
+    border: none;
+    border-radius: 11px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    background-color: var(--custom-red);
+}
+
+.player-buttons:hover {
+    background-color: var(--custom-dark-red);
+}
+
+.player-buttons:active {
+    background-color: var(--custom-light-red);
 }
 
 #round-history {
@@ -141,3 +165,7 @@ main {
     text-align: center;
 }
 
+#round-history > h3 {
+    font-weight: normal;
+    font-size: 1.3rem;
+}
