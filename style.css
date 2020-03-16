@@ -20,13 +20,6 @@ body {
 
 main {
     display: grid;
-/*    grid-template-areas:
-    "title title title"
-    "score score score"
-    "round round round"
-    "player history computer"
-    "buttons history taunt"; 
-    grid-template-columns: 1fr .75fr 1fr; */
     grid-template-areas:
     "title title"
     "score score"
@@ -37,8 +30,10 @@ main {
     "history history"
     "attribution attribution";
     grid-template-columns: 1fr 1fr;
-    grid-gap: max(1vw, 5px);
+    gap: 1vw;
     text-transform: uppercase;
+    width: 100%;
+    margin: auto;
 }
 
 #display-title {
@@ -53,7 +48,7 @@ main {
 }
 
 #display-title > p {
-    margin-top: 10px;
+    margin: 0.625rem 0;
     color: var(--custom-dark-grey);
     font-size: 1.2rem;
 }
@@ -62,7 +57,7 @@ main {
     grid-area: score;
     display: grid;
     grid-template-columns: 1fr .75fr 1fr;
-    grid-gap: max(1vw, 5px);
+    gap: 1vw;
 }
 
 .scores {
@@ -80,7 +75,7 @@ main {
 }
 
 .scores > p {
-    margin: 6px auto 3px;
+    margin: 0.375rem auto 0.1875rem;
     font-size: 1.5rem;
 }
 
@@ -97,12 +92,12 @@ main {
 #round-number > h2 {
     font-size: 1.4rem;
     font-weight: normal;
-    margin: 10px 0;
+    margin: 0.625rem 0;
 }
 
 #round-number > p {
     font-size: 1.1rem;
-    margin: 5px 0;
+    margin: 0.3125rem 0;
     color: var(--custom-grey);
 }
 
@@ -136,14 +131,14 @@ main {
 #computer-taunt > p {
     font-size: 1rem;
     font-style: italic;
-    margin: 6px 0 12px;
+    margin: 0.375rem 0 0.75rem;
 }
 
 .player-buttons {
-    height: 45px;
-    width: 120px;
+    height: 2.8125rem;
+    width: 6.5rem;
     border: none;
-    border-radius: 11px;
+    border-radius: 0.75rem;
     color: white;
     text-transform: uppercase;
     font-size: 0.9rem;
@@ -205,4 +200,44 @@ main {
     text-transform: initial;
     font-size: 0.5rem;
     margin: 1rem 0 0;
+}
+
+@media only screen and (min-width: 768px) {
+    main {
+        grid-template-areas:
+        "title title title"
+        "score score score"
+        "round round round"
+        "player history computer"
+        "buttons history taunt"
+        "attribution attribution attribution"; 
+        grid-template-columns: 1fr .65fr 1fr;
+        max-width: none;
+    }
+
+    .score-area {
+        grid-template-columns: 1fr .65fr 1fr;
+    }
+
+    .player-buttons {
+        width: 5.625rem;
+    }
+    
+    .history-img {
+        margin: 0 0.8rem;
+    }
+}
+
+ @media only screen and (min-width: 992px) {
+    main {
+        max-width: 992px;
+    }
+    
+    .player-buttons {
+        width: 6.5rem;
+    }
+
+    .history-img {
+        margin: 0 1.5rem;
+    }
 }

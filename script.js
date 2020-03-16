@@ -64,7 +64,7 @@ function increase(targetIntegerString) {
 }
 
 function recordRound(playerRoundIcon, computerRoundIcon) {
-    if (Number(numRounds.textContent) > 3) {
+    if (Number(numRounds.textContent) > 4) {
         let toRemove = document.querySelector(`#history-top`);
         let nextRecord = toRemove.nextSibling;
         historyContainer.removeChild(toRemove);
