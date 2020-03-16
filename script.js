@@ -8,6 +8,9 @@ const tauntText = document.querySelector('#computer-taunt > p');
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
+const historyContainer = document.querySelector('#round-history');
+const attribution = document.querySelector('#attribution');
+const imgSrc = 'images';
 
 function generateRandIndex(array) {
     return Math.floor(Math.random()*array.length);
@@ -28,16 +31,6 @@ function decideWinner(playerChoice, computerIndex) {
     }
     
     return difference;
-}
-
-function playRound(playerChoice) {
-    let result;
-    let taunt;
-    let computerIndex = computerPlay();
-    let computerChoice = allChoices[computerIndex];
-    result = decideWinner(playerChoice, computerIndex);
-    taunt = generateTaunt(result);
-    updateDisplay(playerChoice, computerChoice, result, taunt);
 }
 
 function generateTaunt(result) {
@@ -70,25 +63,76 @@ function increase(targetIntegerString) {
     targetIntegerString.textContent = `${Number(targetIntegerString.textContent)+1}`;
 }
 
+function recordRound(playerRoundIcon, computerRoundIcon) {
+    if (Number(numRounds.textContent) > 3) {
+        let toRemove = document.querySelector(`#history-top`);
+        let nextRecord = toRemove.nextSibling;
+        historyContainer.removeChild(toRemove);
+        nextRecord.id = 'history-top';
+    }
+    let roundRecord = document.createElement('div');
+    let player = document.createElement('img');
+    let computer = document.createElement('img');
+    let round = document.createElement('p');
+
+    roundRecord.classList.add('round-history-entry');
+    if (Number(numRounds.textContent) == 1) {
+        roundRecord.id = 'history-top';
+        attribution.style.visibility = 'visible';
+    }
+
+    player.src = `${imgSrc}/${playerRoundIcon}`;
+    player.classList.add('history-img');
+
+    computer.src = `${imgSrc}/${computerRoundIcon}`;
+    computer.classList.add('history-img');
+
+    round.textContent = numRounds.textContent;
+
+    roundRecord.appendChild(player);
+    roundRecord.appendChild(round);
+    roundRecord.appendChild(computer);
+
+    historyContainer.appendChild(roundRecord);
+}
+
 function updateDisplay(playerChoice, computerChoice, result, taunt) {
+    let playerRoundIcon, computerRoundIcon;
     increase(numRounds);
     switch (result) {
         case 1:
             increase(wonRounds);
             resultAnnouncer.textContent = `You won! ${playerChoice} beats ${computerChoice}!`;
             resultAnnouncer.style.color = 'var(--custom-green)';
+            playerRoundIcon = `${playerChoice}-green.png`;
+            computerRoundIcon = `${computerChoice}-red.png`;
             break;
         case -1:
             increase(lostRounds);
             resultAnnouncer.textContent = `You lost! ${playerChoice} loses to ${computerChoice}!`;
             resultAnnouncer.style.color = 'var(--custom-red)';
+            playerRoundIcon = `${playerChoice}-red.png`;
+            computerRoundIcon = `${computerChoice}-green.png`;
             break;
         case 0:
             increase(tiedRounds);
             resultAnnouncer.textContent = `It's a tie! ${playerChoice}! does nothing against ${computerChoice}!`;
             resultAnnouncer.style.color = 'var(--custom-grey)';
+            playerRoundIcon = `${playerChoice}.png`;
+            computerRoundIcon = `${computerChoice}.png`;
     }
+    recordRound(playerRoundIcon, computerRoundIcon);
     tauntText.textContent = taunt;
+}
+
+function playRound(playerChoice) {
+    let result;
+    let taunt;
+    let computerIndex = computerPlay();
+    let computerChoice = allChoices[computerIndex];
+    result = decideWinner(playerChoice, computerIndex);
+    taunt = generateTaunt(result);
+    updateDisplay(playerChoice, computerChoice, result, taunt);
 }
 
 const choiceButtons = document.querySelectorAll('.player-buttons');

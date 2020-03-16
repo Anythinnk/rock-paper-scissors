@@ -34,7 +34,8 @@ main {
     "player computer"
     "taunt taunt"
     "buttons buttons"
-    "history history";
+    "history history"
+    "attribution attribution";
     grid-template-columns: 1fr 1fr;
     grid-gap: max(1vw, 5px);
     text-transform: uppercase;
@@ -162,10 +163,46 @@ main {
 
 #round-history {
     grid-area: history;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #round-history > h3 {
     font-weight: normal;
     font-size: 1.3rem;
+    margin: 1rem 0 0.5rem;
+}
+
+.round-history-entry {
+    display: flex;
+    align-items: center;
+    margin: 0.2rem 0;
+}
+
+.round-history-entry > p {
+    font-size: 1.2rem;
+    padding: 0.5rem 1.5rem;
+    margin: 0;
+    border-top: 1px solid var(--custom-grey);
+    color: var(--custom-grey)
+}
+
+#history-top > p {
+    border-top: none;
+}
+
+.history-img {
+    height: 2.2rem;
+    width: 2.2rem;
+    margin: 0 1.5rem;
+}
+
+#attribution {
+    grid-area: attribution;
+    visibility: hidden;
+    text-align: center;
+    text-transform: initial;
+    font-size: 0.5rem;
+    margin: 1rem 0 0;
 }
