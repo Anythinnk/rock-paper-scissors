@@ -116,7 +116,7 @@ function updateDisplay(playerChoice, computerChoice, result, taunt) {
             break;
         case 0:
             increase(tiedRounds);
-            resultAnnouncer.textContent = `It's a tie! ${playerChoice}! does nothing against ${computerChoice}!`;
+            resultAnnouncer.textContent = `It's a tie! ${playerChoice} does nothing against ${computerChoice}!`;
             resultAnnouncer.style.color = 'var(--custom-grey)';
             playerRoundIcon = `${playerChoice}.png`;
             computerRoundIcon = `${computerChoice}.png`;

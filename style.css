@@ -10,12 +10,15 @@
     --custom-dark-grey: rgb(122, 122, 122);
     --custom-grey: rgb(161, 161, 161);
     --custom-off-white: rgb(240, 240, 240);
+    --custom-black: rgb(20, 20, 20);
+    --custom-white: rgb(253, 253, 253);
 }
 
 body {
     background-color: var(--custom-off-white);
     font-family: "Segoe UI", sans-serif;
     font-size: 100%;
+    color: var(--custom-black);
 }
 
 main {
@@ -113,7 +116,7 @@ main {
     border: 1px solid var(--custom-grey);
     margin: 0 5%;
     padding-bottom: 100%;
-    background-color: white;
+    background-color: var(--custom-white);
 }
 
 #player-choice {
@@ -139,7 +142,7 @@ main {
     width: 6.5rem;
     border: none;
     border-radius: 0.75rem;
-    color: white;
+    color: var(--custom-white);
     text-transform: uppercase;
     font-size: 0.9rem;
     text-align: center;
@@ -230,9 +233,14 @@ main {
 
  @media only screen and (min-width: 992px) {
     main {
+        grid-template-columns: 1fr .75fr 1fr;
         max-width: 992px;
     }
     
+    .score-area {
+        grid-template-columns: 1fr .75fr 1fr;
+    }
+
     .player-buttons {
         width: 6.5rem;
     }
