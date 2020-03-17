@@ -3,22 +3,38 @@
 }
 
 :root {
-    --custom-red: rgb(225, 65, 65);
-    --custom-dark-red: rgb(195, 65, 65);
-    --custom-light-red: rgb(255, 65, 65);
-    --custom-green: rgb(27, 155, 91);
-    --custom-dark-grey: rgb(122, 122, 122);
-    --custom-grey: rgb(161, 161, 161);
-    --custom-off-white: rgb(240, 240, 240);
-    --custom-black: rgb(20, 20, 20);
-    --custom-white: rgb(253, 253, 253);
+    --primary-color-1: rgb(195, 65, 65);
+    --primary-color-2: rgb(225, 65, 65);
+    --primary-color-3: rgb(255, 65, 65);
+    --secondary-color: rgb(27, 155, 91);
+    --tertiary-color-1: rgb(122, 122, 122);
+    --tertiary-color-2: rgb(161, 161, 161);
+    --tertiary-color-3: rgb(240, 240, 240);
+    --base-text-color-1: rgb(20, 20, 20);
+    --base-text-color-2: rgb(253, 253, 253);
+    --base-default-color: rgb(253, 253, 253);
+    --link-text-color: rgb(0, 0, 238);
 }
 
 body {
-    background-color: var(--custom-off-white);
+    background-color: var(--tertiary-color-3);
     font-family: "Segoe UI", sans-serif;
     font-size: 100%;
-    color: var(--custom-black);
+    color: var(--base-text-color-1);
+}
+
+.dark-mode {
+    --primary-color-1: rgb(245, 74, 74);
+    --primary-color-2: rgb(215, 74, 74);
+    --primary-color-3: rgb(185, 74, 74);
+    --secondary-color: rgb(27, 155, 91);
+    --tertiary-color-1: rgb(240, 240, 240);
+    --tertiary-color-2: rgb(158, 158, 158);
+    --tertiary-color-3: rgb(39, 39, 39);
+    --base-text-color-1: rgb(218, 218, 218);
+    --base-text-color-2: rgb(218, 218, 218);
+    --base-default-color: rgb(29, 29, 29); 
+    --link-text-color: rgb(143, 143, 238);
 }
 
 main {
@@ -46,13 +62,13 @@ main {
 
 #display-title > h1 {
     margin-bottom: 0;
-    color: var(--custom-red);
+    color: var(--primary-color-2);
     font-size: 2.4rem;
 }
 
 #display-title > p {
     margin: 0.625rem 0;
-    color: var(--custom-dark-grey);
+    color: var(--tertiary-color-1);
     font-size: 1.2rem;
 }
 
@@ -74,7 +90,7 @@ main {
     margin: 0;
     font-weight: normal;
     font-size: 1.5rem;
-    color: var(--custom-red);
+    color: var(--primary-color-2);
 }
 
 .scores > p {
@@ -84,7 +100,7 @@ main {
 
 .scores > p.label {
     font-size: 1rem;
-    color: var(--custom-grey);
+    color: var(--tertiary-color-2);
 }
 
 #round-number {
@@ -101,7 +117,7 @@ main {
 #round-number > p {
     font-size: 1.1rem;
     margin: 0.3125rem 0;
-    color: var(--custom-grey);
+    color: var(--tertiary-color-2);
 }
 
 #player-choice-display {
@@ -113,10 +129,10 @@ main {
 }
 
 .choice-display-box {
-    border: 1px solid var(--custom-grey);
+    border: 1px solid var(--tertiary-color-2);
     margin: 0 5%;
     padding-bottom: 100%;
-    background-color: var(--custom-white);
+    background-color: var(--base-default-color);
 }
 
 #player-choice {
@@ -127,7 +143,8 @@ main {
 
 #computer-taunt {
     grid-area: taunt;
-    text-align: center;
+    align-self: center;
+    justify-self: center;
     text-transform: initial;
 }
 
@@ -141,22 +158,22 @@ main {
     height: 2.8125rem;
     width: 6.5rem;
     border: none;
-    border-radius: 0.75rem;
-    color: var(--custom-white);
+    border-radius: 1.4rem;
+    color: var(--base-text-color-2);
     text-transform: uppercase;
     font-size: 0.9rem;
     text-align: center;
     cursor: pointer;
     outline: none;
-    background-color: var(--custom-red);
+    background-color: var(--primary-color-2);
 }
 
 .player-buttons:hover {
-    background-color: var(--custom-dark-red);
+    background-color: var(--primary-color-1);
 }
 
 .player-buttons:active {
-    background-color: var(--custom-light-red);
+    background-color: var(--primary-color-3);
 }
 
 #round-history {
@@ -182,8 +199,8 @@ main {
     font-size: 1.2rem;
     padding: 0.5rem 1.5rem;
     margin: 0;
-    border-top: 1px solid var(--custom-grey);
-    color: var(--custom-grey)
+    border-top: 1px solid var(--tertiary-color-2);
+    color: var(--tertiary-color-2)
 }
 
 #history-top > p {
@@ -203,6 +220,10 @@ main {
     text-transform: initial;
     font-size: 0.5rem;
     margin: 1rem 0 0;
+}
+
+#attribution a {
+    color: var(--link-text-color);
 }
 
 @media only screen and (min-width: 768px) {

@@ -103,21 +103,21 @@ function updateDisplay(playerChoice, computerChoice, result, taunt) {
         case 1:
             increase(wonRounds);
             resultAnnouncer.textContent = `You won! ${playerChoice} beats ${computerChoice}!`;
-            resultAnnouncer.style.color = 'var(--custom-green)';
+            resultAnnouncer.style.color = 'var(--secondary-color)';
             playerRoundIcon = `${playerChoice}-green.png`;
             computerRoundIcon = `${computerChoice}-red.png`;
             break;
         case -1:
             increase(lostRounds);
             resultAnnouncer.textContent = `You lost! ${playerChoice} loses to ${computerChoice}!`;
-            resultAnnouncer.style.color = 'var(--custom-red)';
+            resultAnnouncer.style.color = 'var(--primary-color-2)';
             playerRoundIcon = `${playerChoice}-red.png`;
             computerRoundIcon = `${computerChoice}-green.png`;
             break;
         case 0:
             increase(tiedRounds);
             resultAnnouncer.textContent = `It's a tie! ${playerChoice} does nothing against ${computerChoice}!`;
-            resultAnnouncer.style.color = 'var(--custom-grey)';
+            resultAnnouncer.style.color = 'var(--tertiary-color-2)';
             playerRoundIcon = `${playerChoice}.png`;
             computerRoundIcon = `${computerChoice}.png`;
     }
@@ -134,6 +134,12 @@ function playRound(playerChoice) {
     taunt = generateTaunt(result);
     updateDisplay(playerChoice, computerChoice, result, taunt);
 }
+
+const themeToggle = document.querySelector('#toggle-theme');
+themeToggle.addEventListener('click', () => {
+    let element = document.body;
+    element.classList.toggle('dark-mode');
+})
 
 const choiceButtons = document.querySelectorAll('.player-buttons');
 choiceButtons.forEach((button) => {
