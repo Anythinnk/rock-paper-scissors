@@ -16,13 +16,6 @@
     --link-text-color: rgb(0, 0, 238);
 }
 
-body {
-    background-color: var(--tertiary-color-3);
-    font-family: "Segoe UI", sans-serif;
-    font-size: 100%;
-    color: var(--base-text-color-1);
-}
-
 .dark-mode {
     --primary-color-1: rgb(245, 74, 74);
     --primary-color-2: rgb(215, 74, 74);
@@ -35,6 +28,81 @@ body {
     --base-text-color-2: rgb(218, 218, 218);
     --base-default-color: rgb(29, 29, 29); 
     --link-text-color: rgb(143, 143, 238);
+}
+
+body {
+    background-color: var(--tertiary-color-3);
+    font-family: "Segoe UI", sans-serif;
+    font-size: 100%;
+    color: var(--base-text-color-1);
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header > p {
+    font-size: 0.95rem;
+    margin: 0.3rem 0.4rem;
+    color: var(--tertiary-color-2);
+}
+
+.bold-label {
+    color: var(--base-text-color-1);
+    font-weight: bold;
+}
+
+.theme-switch { /* container of switch */
+    position: relative;
+    display: inline-block;
+    --switch-width: 3rem;
+    --switch-height: 1.6rem;
+    --switch-gap-top: 0.25rem;
+    --switch-gap-side: 0.3rem;
+    --switch-circle-diameter: calc(var(--switch-height) - 2 * var(--switch-gap-top));
+    --switch-transition-time: .3s;
+    width: var(--switch-width);
+    height: var(--switch-height);
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-slider { /* background of the switch */
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--tertiary-color-2);
+    transition: var(--switch-transition-time);
+    border-radius: calc(var(--switch-height)/2);
+}
+
+.switch-slider:before { /* switch circle */
+    position: absolute;
+    content: '';
+    height: var(--switch-circle-diameter);
+    width: var(--switch-circle-diameter);
+    left: var(--switch-gap-side);
+    bottom: var(--switch-gap-top);
+    background-color: var(--tertiary-color-3);
+    transition: var(--switch-transition-time);
+    border-radius: 50%;
+}
+
+.theme-switch input:checked + .switch-slider {
+    background-color: var(--primary-color-1);
+}
+
+.theme-switch input:checked + .switch-slider:before {
+    transform: translateX(calc(var(--switch-width) - 2 * var(--switch-gap-side) - var(--switch-circle-diameter)));
 }
 
 main {

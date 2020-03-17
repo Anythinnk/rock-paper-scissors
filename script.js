@@ -136,9 +136,13 @@ function playRound(playerChoice) {
 }
 
 const themeToggle = document.querySelector('#toggle-theme');
+const themeLightText = document.querySelector('#theme-light-label');
+const themeDarkText = document.querySelector('#theme-dark-label');
 themeToggle.addEventListener('click', () => {
     let element = document.body;
     element.classList.toggle('dark-mode');
+    themeLightText.classList.toggle('bold-label');
+    themeDarkText.classList.toggle('bold-label');
 })
 
 const choiceButtons = document.querySelectorAll('.player-buttons');
