@@ -188,6 +188,26 @@ main {
     color: var(--tertiary-color-2);
 }
 
+.choice-display-box {
+    border: 1px solid var(--tertiary-color-2);
+    margin: 0 5%;
+    background-color: var(--base-default-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice-display-box:before { /* to fix box aspect ratio while allowing content */
+    content: '';
+    padding-bottom: 110%;
+    float: left;
+}
+
+.choice-display-box:after { /* how it works: https://keithjgrant.com/posts/2017/03/aspect-ratios/ */
+    content: '';
+    clear: left;
+}
+
 #player-choice-display {
     grid-area: player;
 }
@@ -196,11 +216,30 @@ main {
     grid-area: computer;
 }
 
-.choice-display-box {
-    border: 1px solid var(--tertiary-color-2);
-    margin: 0 5%;
-    padding-bottom: 100%;
-    background-color: var(--base-default-color);
+.display-img {
+    width: 80%;
+    height: auto;
+    animation-name: rotate;
+    animation-duration: .3s;
+    animation-direction: alternate;
+    animation-iteration-count: 5;
+    animation-fill-mode: forwards;
+}
+
+#display-player {
+    transform: rotate(-20deg);
+    transform-origin: left;
+}
+
+#display-computer {
+    transform: rotate(20deg);
+    transform-origin: right;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 #player-choice {

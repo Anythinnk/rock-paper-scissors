@@ -63,6 +63,39 @@ function increase(targetIntegerString) {
     targetIntegerString.textContent = `${Number(targetIntegerString.textContent)+1}`;
 }
 
+function animateChoices(playerChoice, computerChoice) {
+    const playerImgContainer = document.querySelector('#player-choice-display');
+    const computerImgContainer = document.querySelector('#computer-choice-display');
+    if (Number(numRounds.textContent) > 1) {
+        let playerRemove = document.querySelector('#display-player');
+        let computerRemove = document.querySelector('#display-computer');
+        playerImgContainer.removeChild(playerRemove);
+        computerImgContainer.removeChild(computerRemove);
+    }
+    let pageTheme;
+    if (document.body.classList.contains('dark-mode')) {
+        pageTheme = 'dark';
+    } else {
+        pageTheme = 'light';
+    }
+    let playerFile = `placeholder-${playerChoice}-${pageTheme}.svg`;
+    let computerFile = `placeholder-${computerChoice}-${pageTheme}.svg`;
+
+    let player = document.createElement('img');
+    let computer = document.createElement('img');
+
+    player.src = `${imgSrc}/${playerFile}`;
+    player.classList.add('display-img');
+    player.id = 'display-player';
+
+    computer.src = `${imgSrc}/${computerFile}`;
+    computer.classList.add('display-img');
+    computer.id = 'display-computer';
+
+    playerImgContainer.append(player);
+    computerImgContainer.append(computer);
+}
+
 function recordRound(playerRoundIcon, computerRoundIcon) {
     if (Number(numRounds.textContent) > 4) {
         let toRemove = document.querySelector(`#history-top`);
@@ -121,6 +154,7 @@ function updateDisplay(playerChoice, computerChoice, result, taunt) {
             playerRoundIcon = `${playerChoice}.png`;
             computerRoundIcon = `${computerChoice}.png`;
     }
+    animateChoices(playerChoice, computerChoice);
     recordRound(playerRoundIcon, computerRoundIcon);
     tauntText.textContent = taunt;
 }
@@ -139,8 +173,7 @@ const themeToggle = document.querySelector('#toggle-theme');
 const themeLightText = document.querySelector('#theme-light-label');
 const themeDarkText = document.querySelector('#theme-dark-label');
 themeToggle.addEventListener('click', () => {
-    let element = document.body;
-    element.classList.toggle('dark-mode');
+    document.body.classList.toggle('dark-mode');
     themeLightText.classList.toggle('bold-label');
     themeDarkText.classList.toggle('bold-label');
 })
