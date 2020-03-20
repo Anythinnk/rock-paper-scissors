@@ -9,7 +9,8 @@
     --secondary-color: rgb(27, 155, 91);
     --tertiary-color-1: rgb(122, 122, 122);
     --tertiary-color-2: rgb(161, 161, 161);
-    --tertiary-color-3: rgb(240, 240, 240);
+    --tertiary-color-3: rgb(200, 200, 200);
+    --tertiary-color-4: rgb(240, 240, 240);
     --base-text-color-1: rgb(20, 20, 20);
     --base-text-color-2: rgb(253, 253, 253);
     --base-default-color: rgb(253, 253, 253);
@@ -21,9 +22,10 @@
     --primary-color-2: rgb(215, 74, 74);
     --primary-color-3: rgb(185, 74, 74);
     --secondary-color: rgb(27, 155, 91);
-    --tertiary-color-1: rgb(240, 240, 240);
-    --tertiary-color-2: rgb(158, 158, 158);
-    --tertiary-color-3: rgb(39, 39, 39);
+    --tertiary-color-1: rgb(151, 151, 151);
+    --tertiary-color-2: rgb(136, 136, 136);
+    --tertiary-color-3: rgb(100, 100, 100);
+    --tertiary-color-4: rgb(39, 39, 39);
     --base-text-color-1: rgb(218, 218, 218);
     --base-text-color-2: rgb(218, 218, 218);
     --base-default-color: rgb(29, 29, 29); 
@@ -31,7 +33,7 @@
 }
 
 body {
-    background-color: var(--tertiary-color-3);
+    background-color: var(--tertiary-color-4);
     font-family: "Segoe UI", sans-serif;
     font-size: 100%;
     color: var(--base-text-color-1);
@@ -92,7 +94,7 @@ header > p {
     width: var(--switch-circle-diameter);
     left: var(--switch-gap-side);
     bottom: var(--switch-gap-top);
-    background-color: var(--tertiary-color-3);
+    background-color: var(--tertiary-color-4);
     transition: var(--switch-transition-time);
     border-radius: 50%;
 }
@@ -138,6 +140,28 @@ main {
     margin: 0.625rem 0;
     color: var(--tertiary-color-1);
     font-size: 1.2rem;
+}
+
+#restart-button {
+    height: 1.7rem;
+    width: 4.3rem;
+    border: none;
+    border-radius: 0.9rem;
+    color: var(--base-text-color-2);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    background-color: var(--tertiary-color-2);
+}
+
+#restart-button:hover {
+    background-color: var(--tertiary-color-1);
+}
+
+#restart-button:active {
+    background-color: var(--tertiary-color-3);
 }
 
 .score-area {

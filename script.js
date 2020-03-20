@@ -31,7 +31,6 @@ function decideWinner(playerChoice, computerIndex) {
     if (Math.abs(difference) == 2) {
         difference *= -0.5
     }
-    
     return difference;
 }
 
@@ -170,6 +169,31 @@ function playRound(playerChoice) {
     taunt = generateTaunt(result);
     updateDisplay(playerChoice, computerChoice, result, taunt);
 }
+
+function removeElementsByClass(className) {
+    let elements = document.getElementsByClassName(className);
+    while (elements.length > 0) {
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
+function restartGame() {
+    if (Number(numRounds.textContent) > 0) {
+        wonRounds.textContent = '0';
+        tiedRounds.textContent = '0';
+        lostRounds.textContent = '0';
+        numRounds.textContent = '0';
+        resultAnnouncer.textContent = 'Click on a button to get started!';
+        resultAnnouncer.style.color = 'var(--tertiary-color-2)';
+        tauntText.textContent = 'So, you think you can beat me?';
+        removeElementsByClass('display-img');
+        removeElementsByClass('round-history-entry');
+        attribution.style.visibility = 'hidden';
+    }
+}
+
+const restartButton = document.querySelector('#restart-button');
+restartButton.addEventListener('click', () => restartGame());
 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
