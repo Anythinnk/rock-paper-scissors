@@ -11,6 +11,8 @@ const scissorsBtn = document.querySelector('#scissors');
 const historyContainer = document.querySelector('#round-history');
 const attribution = document.querySelector('#attribution');
 const imgSrc = 'images';
+let playerImg;
+let computerImg;
 
 function generateRandIndex(array) {
     return Math.floor(Math.random()*array.length);
@@ -81,19 +83,19 @@ function animateChoices(playerChoice, computerChoice) {
     let playerFile = `placeholder-${playerChoice}-${pageTheme}.svg`;
     let computerFile = `placeholder-${computerChoice}-${pageTheme}.svg`;
 
-    let player = document.createElement('img');
-    let computer = document.createElement('img');
+    playerImg = document.createElement('img');
+    computerImg = document.createElement('img');
 
-    player.src = `${imgSrc}/${playerFile}`;
-    player.classList.add('display-img');
-    player.id = 'display-player';
+    playerImg.src = `${imgSrc}/${playerFile}`;
+    playerImg.classList.add('display-img');
+    playerImg.id = 'display-player';
 
-    computer.src = `${imgSrc}/${computerFile}`;
-    computer.classList.add('display-img');
-    computer.id = 'display-computer';
+    computerImg.src = `${imgSrc}/${computerFile}`;
+    computerImg.classList.add('display-img');
+    computerImg.id = 'display-computer';
 
-    playerImgContainer.append(player);
-    computerImgContainer.append(computer);
+    playerImgContainer.append(playerImg);
+    computerImgContainer.append(computerImg);
 }
 
 function recordRound(playerRoundIcon, computerRoundIcon) {
@@ -169,14 +171,31 @@ function playRound(playerChoice) {
     updateDisplay(playerChoice, computerChoice, result, taunt);
 }
 
-const themeToggle = document.querySelector('#toggle-theme');
-const themeLightText = document.querySelector('#theme-light-label');
-const themeDarkText = document.querySelector('#theme-dark-label');
-themeToggle.addEventListener('click', () => {
+function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     themeLightText.classList.toggle('bold-label');
     themeDarkText.classList.toggle('bold-label');
-})
+    if (playerImg) {
+        let newPlayerSrc = playerImg.getAttribute('src');
+        let newComputerSrc = computerImg.getAttribute('src');
+        if (document.body.classList.contains('dark-mode')) {
+            newPlayerSrc = newPlayerSrc.replace('light', 'dark');
+            newComputerSrc = newComputerSrc.replace('light', 'dark');
+            playerImg.src = newPlayerSrc;
+            computerImg.src = newComputerSrc;
+        } else {
+            newPlayerSrc = newPlayerSrc.replace('dark', 'light');
+            newComputerSrc = newComputerSrc.replace('dark', 'light');
+            playerImg.src = newPlayerSrc;
+            computerImg.src = newComputerSrc;
+        }
+    }
+}
+
+const themeToggle = document.querySelector('#toggle-theme');
+const themeLightText = document.querySelector('#theme-light-label');
+const themeDarkText = document.querySelector('#theme-dark-label');
+themeToggle.addEventListener('click', () => toggleDarkMode());
 
 const choiceButtons = document.querySelectorAll('.player-buttons');
 choiceButtons.forEach((button) => {
